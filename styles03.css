@@ -1,0 +1,354 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* 导航栏样式 */
+.navbar {
+    background-color: transparent;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: none;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-item:hover {
+    color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.nav-item.active {
+    color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 添加底线效果 */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.nav-item:hover::after {
+    background: linear-gradient(90deg, rgba(0, 123, 255, 0.8), rgba(0, 255, 255, 0.8));
+}
+
+.nav-item.active::after {
+    background: linear-gradient(90deg, rgba(0, 123, 255, 0.8), rgba(0, 255, 255, 0.8));
+}
+
+/* 搜索框样式 */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    padding: 0.5rem;
+}
+
+.search-input {
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    outline: none;
+    width: 200px;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #666;
+}
+
+/* 项目容器样式 */
+.projects-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* 添加科技感变量 */
+:root {
+    --glow-color: #007bff;
+    --glow-spread-color: rgba(0, 123, 255, 0.2);
+    --enhanced-glow-color: rgba(0, 123, 255, 0.3);
+    --btn-color: rgb(61, 106, 255);
+}
+
+/* 项目卡片样式优化 */
+.project-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 0 0.5rem var(--glow-spread-color);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        var(--glow-spread-color),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 1rem var(--glow-color);
+    border-color: var(--glow-color);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.project-card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.project-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.date {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* 添加技术标签样式 */
+.tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background: rgba(0, 123, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: var(--glow-color);
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(0, 123, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 8px var(--glow-spread-color);
+    cursor: pointer;
+}
+
+/* 项目链接样式 */
+.read-more {
+    color: var(--glow-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.read-more:hover {
+    background: rgba(0, 123, 255, 0.1);
+    border-color: var(--glow-color);
+    box-shadow: 0 0 8px var(--glow-spread-color);
+}
+
+.read-more::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover::after {
+    transform: translateX(4px);
+}
+
+/* 项目状态标签 */
+.project-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    background: rgba(0, 123, 255, 0.1);
+    color: var(--glow-color);
+    border: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+/* 进度条样式 */
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 2px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--glow-color), var(--enhanced-glow-color));
+    transition: width 0.5s ease;
+    border-radius: 2px;
+    position: relative;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+}
+
+/* 项目分类导航样式 */
+.projects-nav {
+    background-color: #f8f9fa; /* 背景颜色 */
+    padding: 10px 0; /* 内边距 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    position: relative; /* 使伪元素相对于导航栏定位 */
+    overflow: hidden; /* 隐藏溢出部分 */
+}
+
+.projects-nav-inner {
+    display: flex; /* 使用 flexbox 布局 */
+    justify-content: space-around; /* 项目均匀分布 */
+    position: relative; /* 使伪元素相对于内部容器定位 */
+}
+
+.project-nav-item {
+    color: #333; /* 字体颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    padding: 10px 15px; /* 内边距 */
+    border-radius: 5px; /* 圆角 */
+    transition: background-color 0.3s, transform 0.3s; /* 背景颜色和变换过渡效果 */
+    position: relative; /* 使伪元素相对于导航项定位 */
+}
+
+.project-nav-item:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* 悬停时使用更浅的蓝色 */
+    transform: translateY(-3px); /* 悬停时向上移动 */
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3); /* 添加阴影效果 */
+}
+
+.project-nav-item.active {
+    background-color: rgba(0, 123, 255, 0.2); /* 使用半透明蓝色 */
+    color: #007bff; /* 字体颜色 */
+    border: 1px solid rgba(0, 123, 255, 0.5); /* 添加边框以增强视觉效果 */
+}
+
+/* 添加科技感的伪元素 */
+.project-nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(0, 123, 255, 0.8), rgba(0, 255, 255, 0.8));
+    transition: width 0.3s ease, left 0.3s ease; /* 过渡效果 */
+}
+
+.project-nav-item:hover::after {
+    width: 100%; /* 悬停时扩展到100% */
+    left: 0; /* 从左侧开始 */
+} 

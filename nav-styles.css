@@ -1,0 +1,145 @@
+/* 一级导航增强 */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        var(--glow-color),
+        var(--enhanced-glow-color),
+        var(--glow-color),
+        transparent
+    );
+    animation: navGlow 3s linear infinite;
+}
+
+@keyframes navGlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 二级导航样式增强 */
+.resources-nav, .projects-nav {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.resources-nav-inner, .projects-nav-inner {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.resource-nav-item, .project-nav-item {
+    position: relative;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(0, 123, 255, 0.05);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.resource-nav-item:hover, .project-nav-item:hover {
+    background: rgba(0, 123, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--glow-color);
+}
+
+.resource-nav-item.active, .project-nav-item.active {
+    background: linear-gradient(135deg, var(--glow-color), var(--enhanced-glow-color));
+    color: white;
+    box-shadow: 0 0 20px var(--glow-spread-color);
+}
+
+.resource-nav-item i, .project-nav-item i {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.resource-nav-item:hover i, .project-nav-item:hover i {
+    transform: scale(1.2);
+}
+
+/* 导航指示器增强 */
+.nav-indicator {
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--glow-color),
+        var(--enhanced-glow-color)
+    );
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* 二级导航指示器 */
+.subnav-indicator {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--glow-color),
+        var(--enhanced-glow-color)
+    );
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* 悬浮效果 */
+@keyframes buttonGlow {
+    0% { box-shadow: 0 0 5px var(--glow-spread-color); }
+    50% { box-shadow: 0 0 15px var(--glow-color); }
+    100% { box-shadow: 0 0 5px var(--glow-spread-color); }
+}
+
+.resource-nav-item.active, .project-nav-item.active {
+    animation: buttonGlow 2s infinite;
+}
+
+/* 导航波纹效果 */
+.nav-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 123, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 图标悬浮效果 */
+.resource-nav-item i, .project-nav-item i {
+    transition: all 0.3s ease;
+}
+
+.resource-nav-item:hover i, .project-nav-item:hover i {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--glow-color);
+}
+
+/* 激活状态的特效 */
+.resource-nav-item.active i, .project-nav-item.active i {
+    animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+} 

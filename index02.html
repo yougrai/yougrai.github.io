@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记 - 个人知识库</title>
+    <link rel="stylesheet" href="styles02.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index01.html" class="nav-item">首页</a>
+            <a href="index02.html" class="nav-item active">笔记</a>
+            <a href="index03.html" class="nav-item">项目</a>
+            <a href="index04.html" class="nav-item">资源</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-container" style="margin-right: 10px;">
+                <input type="text" placeholder="搜索笔记..." class="search-input">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 笔记分类导航 -->
+    <nav class="notes-nav">
+        <div class="notes-nav-inner">
+            <a href="#prompts" class="note-nav-item active">
+                <i class="fas fa-lightbulb"></i>
+                提示词笔记
+            </a>
+            <a href="#ai" class="note-nav-item">
+                <i class="fas fa-robot"></i>
+                AI应用笔记
+            </a>
+            <a href="#professional" class="note-nav-item">
+                <i class="fas fa-briefcase"></i>
+                专业应用笔记
+            </a>
+            <a href="#images" class="note-nav-item">
+                <i class="fas fa-images"></i>
+                图片笔记
+            </a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="notes-container">
+        <h1>AI工具发展趋势</h1>
+        <canvas id="aiTrendChart" width="400" height="100"></canvas>
+
+        <!-- 提示词笔记区域 -->
+        <section id="prompts" class="notes-section active">
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h3>ChatGPT提示词技巧</h3>
+                    <p>深入探讨ChatGPT提示词编写技巧，包括角色设定、上下文管理、约束条件设置等核心要素。通过实例讲解如何提高AI响应的准确性和实用性。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-10</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>提示词模板集合</h3>
+                    <p>精选各领域高效提示词模板，包括文案写作、代码开发、创意设计等方向。每个模板都附带详细的使用说明和优化建议，助你快速上手。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-09</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>角色扮演提示词</h3>
+                    <p>专业的角色扮演提示词指南，涵盖教师、程序员、作家等多个职业角色。学习如何设定角色特征和行为模式，获得更专业的AI回答。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-08</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- AI应用笔记区域 -->
+        <section id="ai" class="notes-section">
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h3>AI绘画基础教程</h3>
+                    <p>详细介绍Midjourney和Stable Diffusion的使用方法，从基础参数设置到高级风格调整。包含多个实战案例和常见问题解决方案。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-09</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>AI写作助手使用指南</h3>
+                    <p>探索GPT-4、Claude等AI写作助手的高级应用，包括文章创作、内容优化、翻译校对等实用技巧。附带详细的操作步骤和示例。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-08</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>AI音频处理工具</h3>
+                    <p>介绍主流AI音频处理工具的使用方法，包括语音合成、音频转写、音乐创作等功能。提供实用的工作流程和优化建议。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-07</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- 专业应用笔记区域 -->
+        <section id="professional" class="notes-section">
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h3>AI辅助编程实践</h3>
+                    <p>深入探讨GitHub Copilot的使用技巧，包括代码补全、注释生成、重构建议等功能。通过实际项目展示如何提高编程效率。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-08</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>AI数据分析工具</h3>
+                    <p>介绍AI驱动的数据分析工具，包括自动化报表生成、数据可视化、预测模型构建等应用。附带详细的案例分析和最佳实践。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-07</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>AI设计助手应用</h3>
+                    <p>探索AI在设计领域的应用，包括布局生成、配色方案、图标设计等功能。提供实用的设计流程和效果优化建议。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-06</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- 图片笔记区域 -->
+        <section id="images" class="notes-section">
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h3>AI图像处理技术</h3>
+                    <p>详细讲解AI图像处理工具的使用方法，包括图片增强、风格迁移、智能修图等功能。提供实用的处理流程和参数设置指南。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-07</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>AI视频制作技巧</h3>
+                    <p>全面讲解AI视频制作工具的应用，从脚本生成到视频渲染。包括字幕生成、画面优化、特效制作等多个环节的详细说明。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-06</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <h3>AI营销工具集成</h3>
+                    <p>全面介绍AI营销工具的应用场景，包括内容生成、用户分析、投放优化等方面。结合实际案例讲解如何提升营销效果。</p>
+                    <div class="card-footer">
+                        <span class="date">2024-03-05</span>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>&copy; 2024 个人知识库. 保留所有权利.</p>
+    </footer>
+
+    <script src="script02.js"></script>
+    <button onclick="window.location.href='index.html'" class="enter-btn">
+        <span class="btn-text">ENTER</span>
+        <i class="fas fa-arrow-right"></i>
+    </button>
+
+    <style>
+        .enter-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            padding: 16px 32px;
+            background: rgba(0, 123, 255, 0.8);
+            border: 1px solid rgba(0, 123, 255, 0.5);
+            border-radius: 14px;
+            cursor: pointer;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .enter-btn i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .enter-btn:hover {
+            background: rgba(0, 123, 255, 1);
+            border-color: rgba(0, 123, 255, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 24px rgba(0, 123, 255, 0.2),
+                0 0 0 1px rgba(0, 123, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .enter-btn:hover i {
+            transform: translateX(3px);
+            color: rgb(255, 255, 255);
+        }
+
+        .enter-btn:active {
+            transform: translateY(0);
+            box-shadow: 
+                0 4px 16px rgba(0, 123, 255, 0.15),
+                0 0 0 1px rgba(0, 123, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+
+    <script>
+        // 折线图数据
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('aiTrendChart').getContext('2d');
+            const aiTrendChart = new Chart(ctx, {
+                type: 'line', // 折线图
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'], // X轴标签
+                    datasets: [{
+                        label: 'AI工具发展趋势',
+                        data: [10, 20, 30, 50, 80, 120], // Y轴数据
+                        borderColor: 'rgba(0, 123, 255, 1)', // 线条颜色
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)', // 填充颜色
+                        borderWidth: 2,
+                        fill: true // 填充区域
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true // Y轴从0开始
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

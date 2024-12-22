@@ -1,0 +1,141 @@
+:root {
+    --glow-color: #007bff;
+    --glow-spread-color: rgba(0, 123, 255, 0.2);
+    --enhanced-glow-color: rgba(0, 123, 255, 0.3);
+    --btn-color: rgb(61, 106, 255);
+}
+
+/* 导航栏通用样式 */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.nav-left {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+}
+
+/* 导航指示器 */
+.nav-indicator {
+    position: absolute;
+    bottom: -2px;
+    height: 3px;
+    background: var(--glow-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px var(--glow-color);
+    border-radius: 2px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        var(--glow-spread-color),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.nav-item:hover::before {
+    left: 100%;
+}
+
+.nav-item:hover {
+    color: var(--glow-color);
+    transform: translateY(-2px);
+}
+
+.nav-item.active {
+    background: var(--glow-color);
+    color: white;
+    box-shadow: 0 0 15px var(--glow-spread-color);
+}
+
+/* 搜索框样式 */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 123, 255, 0.05);
+    border-radius: 20px;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 0 15px var(--glow-spread-color);
+    border-color: var(--glow-color);
+}
+
+.search-input {
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    outline: none;
+    width: 200px;
+    color: #333;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--glow-color);
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: scale(1.1);
+}
+
+/* 页面过渡效果 */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* 通用动画 */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--glow-spread-color); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+} 

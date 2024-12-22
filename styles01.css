@@ -1,0 +1,661 @@
+/* 全局样式 */
+:root {
+    --primary-color: #00d4ff;  /* 科技蓝 */
+    --secondary-color: #00ff9d; /* 霓虹绿 */
+    --accent-color: #7000ff;    /* 紫色点缀 */
+    --text-color: #e4e4e4;
+    --dark-bg: #0a0a0a;
+    --card-bg: rgba(20, 20, 20, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --hover-color: rgba(255, 255, 255, 0.05);
+    --gradient-primary: linear-gradient(135deg, #00d4ff, #00ff9d);
+    --gradient-hover: linear-gradient(135deg, #00ff9d, #7000ff);
+    --neon-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', 'Rajdhani', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* 导航栏样式 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    backdrop-filter: blur(20px);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 212, 255, 0.1);
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.nav-left {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-item.active {
+    background: #f0f0f0;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--neon-shadow);
+    color: #000000;
+}
+
+/* 轮播图样式 */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: #000000;
+    background: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #e4e4e4;
+}
+
+.carousel-caption h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.carousel-caption p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #e4e4e4;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-prev { left: 20px; }
+.carousel-next { right: 20px; }
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #000000;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #007BFF;
+    box-shadow: 0 0 10px #007BFF;
+}
+
+/* 搜索框样式 */
+/* 搜索框样式 */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1);  /* 调整为浅色背景 */
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 60px;
+    padding: 4px 8px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);  /* 保持为黑色 */
+    padding: 0.5rem 1rem;
+    width: 350px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.search-input::placeholder {
+    color: rgba(0, 0, 0, 0.5);  /* 更改占位符颜色为灰色 */
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.search-btn:hover {
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+
+/* 主要内容区域布局调整 */
+.notes-container {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 60px - 400px); /* 减去导航栏和轮播图的高度 */
+    margin-top: 20px;
+}
+
+/* 右侧内容区域布局 */
+.main-content {
+    width: 100%;
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.main-left:hover ~ .main-content {
+    margin-left: 200px;
+}
+
+/* 自定义滚动条样式 */
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 4px;
+}
+
+/* 左侧导航栏样式 */
+.main-left {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    z-index: 100;
+}
+
+.main-left:hover,
+.main-left.show {
+    transform: translateX(0);
+}
+
+/* 添加一个小标签提示用户有隐藏菜单 */
+.main-left::after {
+    content: '≡';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 8px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.main-left h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--secondary-color);
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category-list li {
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.category-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.category-list li.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 内容区块共同样式 */
+.content-section {
+    min-height: 400px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(20px);
+    margin-bottom: 2rem;
+    color: #000000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 内容区域的过渡效果 */
+.content-section {
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 添加滚动平滑效果 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 优化内容区域的过渡效果 */
+.content-section {
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
+}
+
+/* 确保激活状态的内容区域正确显示 */
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 内容区块标题样式 */
+.content-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--secondary-color);
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 内容网格布局 */
+.content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* 内容卡片样式优化 */
+.content-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--neon-shadow);
+    transform: translateY(-5px);
+}
+
+.content-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.content-card p {
+    color: #000000;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.date {
+    color: rgba(228, 228, 228, 0.5);
+    font-size: 0.9rem;
+}
+
+.read-more {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.read-more:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* 响应式设计优化 */
+@media (max-width: 1400px) {
+    .content-card {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-card {
+        max-width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* 页脚样式 */
+.footer {
+    width: 100%;
+    padding: 2rem 0;
+    background: #ffffff; /* 修改为白色背景 */
+    border-top: 1px solid #e4e4e4; /* 修改为浅灰色边框 */
+    margin-top: 3rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+}
+
+.footer p {
+    color: #000000; /* 修改为黑色字体 */
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin: 0;
+    opacity: 0.8; /* 可选：根据需要调整不透明度 */
+    transition: opacity 0.3s ease;
+}
+
+.footer p:hover {
+    opacity: 1;
+}
+
+/* 确保 .footer 内的所有元素继承黑色字体 */
+.footer * {
+    color: #000000;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1.5rem 0;
+    }
+}
+
+/* 导航链接过渡效果 */
+.nav-item {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-item.active::after {
+    transform: scaleX(1);
+}
+
+/* 移除或更新任何可能覆盖背景颜色的其��样式 */
+/* 例如，如果有针对 .background 类的背景图像设置，确保其被移除或覆盖 */
+
+.background {
+    background-image: none; /* 确保不使用背景图像 */
+    background-color: #ffffff; /* 确保背景颜色为白色 */
+}
+
+/* 确保 .carousel-caption 内的所有元素继承黑色字体 */
+.carousel-caption * {
+    color: #000000;
+}
+
+/* 确保 .read-more 保持蓝色以增强可点击性 */
+.read-more {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.read-more:hover {
+    color: #00d4ff;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* 添加这些样式到 styles01.css */
+.content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 当左侧菜单显示时的样式 */
+.main-left.show ~ .main-content {
+    margin-left: 250px; /* 根据左侧菜单宽度调整 */
+}
+
+/* 确保内容区域正确显示 */
+.content-section {
+    display: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 添加卡片动画效果 */
+.content-card {
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 优化卡片内容布局 */
+.content-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+}
+
+.content-card h3 {
+    margin: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.content-card p {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.card-footer {
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+} 
